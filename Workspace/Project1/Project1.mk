@@ -6,8 +6,8 @@
 ProjectName            :=Project1
 ConfigurationName      :=Debug
 WorkspaceConfiguration :=Debug
-WorkspacePath          :=C:/Users/nicol/Documents/Workspace
-ProjectPath            :=C:/Users/nicol/Documents/Workspace/Project1
+WorkspacePath          :=C:/Users/nicol/Documents/cpp-learning-portfolio/Workspace
+ProjectPath            :=C:/Users/nicol/Documents/cpp-learning-portfolio/Workspace/Project1
 IntermediateDirectory  :=../build-$(WorkspaceConfiguration)/Project1
 OutDir                 :=$(IntermediateDirectory)
 CurrentFileName        :=
@@ -29,7 +29,7 @@ OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
-OutputDirectory        :=C:/Users/nicol/Documents/Workspace/build-$(WorkspaceConfiguration)/bin
+OutputDirectory        :=C:/Users/nicol/Documents/cpp-learning-portfolio/Workspace/build-$(WorkspaceConfiguration)/bin
 OutputFile             :=..\build-$(WorkspaceConfiguration)\bin\$(ProjectName).exe
 Preprocessors          :=
 ObjectSwitch           :=-o 
@@ -96,7 +96,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp 
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/nicol/Documents/Workspace/Project1/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/nicol/Documents/cpp-learning-portfolio/Workspace/Project1/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
 

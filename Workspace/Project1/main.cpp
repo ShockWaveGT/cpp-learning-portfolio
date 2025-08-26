@@ -3,9 +3,9 @@
 #include <string>
 using namespace std;    
 
-void Suma(int, int);
-void ShowAllTasks(); 
-void SearchTaskInfo(map<string , map<int, bool>>, string);
+void ChooseAction(map<string , map<int, bool>>);
+void ShowAllTasks(map<string , map<int, bool>>); 
+map<string , map<int, bool>> SearchOrCreate(map<string , map<int, bool>>, string);
 
 int main ()
 {
@@ -14,26 +14,42 @@ int main ()
     
     map<string , map<int, bool>> task;
     
-    string x; 
-    cout << "Escribe lo que queres buscar" << endl;
-    cin >> x ;
-    
-    SearchTaskInfo(task, x);
+    ChooseAction(task);
 
     return 0;    
 }
 
-void Suma(int num1, int num2)
+void ChooseAction(map<string , map<int, bool>> task)
 {
-    int localtaskId;
-    
-    localtaskId = num1 + num2;
-    
-    cout << "Tu numero es: " << localtaskId << "\n";
-}
+    cout << "Choose how to continue" << endl;
+    cout << "1: Search or Create Task" << endl;
+    cout << "2: Show All Tasks" << endl;
+    cout << "3: Shut down program" << endl;
 
+    int keyIn;
+    cin >> keyIn;
+    
+    
+    switch(keyIn) {
+        case 1:{
+            cout << "Write which task to do you want to search information" << endl;
+            string taskName;
+            cin >> taskName;
+    
+            ChooseAction(SearchOrCreate(task, taskName));
+            break;}
+        case 2:{
+            cout << "Searching all tasks information..." << endl;
+            
+            ShowAllTasks(task);
+            ChooseAction(task);
+            break;}
+        case 3:{
+        break;}};
+        
+};
 
-void SearchTaskInfo(map<string , map<int, bool>> taskIn, string keyIn)
+map<string , map<int, bool>> SearchOrCreate(map<string , map<int, bool>> taskIn, string keyIn)
 {
     
     if(taskIn.contains(keyIn) == 1)
@@ -42,14 +58,18 @@ void SearchTaskInfo(map<string , map<int, bool>> taskIn, string keyIn)
         {
             cout << "numero de tarea es: " << taskId << "\n" << "La tarea esta completada: " << bIsComplete << "\n";
         }
+        return taskIn;
     }
     else
     {
         cout << "El mapa no contiene tu tarea, te la crearemos ahora" << endl;
         
         taskIn[keyIn].insert({ taskIn.size(), false});
+        SearchOrCreate(taskIn, keyIn);
+        cout << "\n";
+        cout << "\n";
         
-        SearchTaskInfo(taskIn, keyIn);
+        return taskIn;
     }
         
 }
@@ -58,9 +78,13 @@ void ShowAllTasks(map<string , map<int, bool>> taskIn)
 {
     for (auto& [task, taskInfo]: taskIn)
     {
+        cout << "Nombre de tarea " << task << "\n";
+
         for (auto& [taskId, bIsComplete]: taskInfo)
         {
-                cout << "El numero de tarea es: " << taskId << "\n" << "La tarea esta completada: "<< bIsComplete << "\n";
+            cout << "El numero de tarea es: " << taskId << "\n" << "La tarea esta completada: "<< bIsComplete << "\n";
+            cout << "\n";
+            cout << "\n";
         }
     }
 }
