@@ -97,7 +97,7 @@ map<string , map<int, ECompletionState>> SearchOrCreate(map<string , map<int, EC
     {
         for (auto& [taskId, completionStatus]: taskIn [taskName])
         {
-            cout << "numero de tarea es: " << taskId << "\n" << "La tarea esta completada: " << completionStatus << "\n";
+            cout << "Numero de tarea es: " << taskId << "\n" << "La tarea esta completada: " << completionStatus << "\n";
         }
         return taskIn;
     }
